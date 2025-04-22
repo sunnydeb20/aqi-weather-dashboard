@@ -33,6 +33,24 @@ st.markdown(
     .input-label {
         color: #FFFFFF;
     }
+    .card {
+        background-color: #1e1e1e;
+        padding: 15px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 2px 2px 5px #000000;
+        margin-bottom: 10px;
+    }
+    .card h2 {
+        color: #FFD700;
+        margin: 0;
+        font-size: 28px;
+    }
+    .card p {
+        color: #FFFFFF;
+        margin: 0;
+        font-size: 16px;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -104,6 +122,44 @@ if st.button("Check Now 🚀"):
 
     st.markdown("---")
 
+    # Real-Time Air Quality Cards (Dynamic)
+    st.subheader("📋 Live Air Quality Readings")
+    card1, card2, card3 = st.columns(3)
+    with card1:
+        st.markdown(
+            f"<div class='card'><h2>{pollutants['pm2_5']} μg/m³</h2><p>PM2.5</p></div>",
+            unsafe_allow_html=True
+        )
+    with card2:
+        st.markdown(
+            f"<div class='card'><h2>{pollutants['pm10']} μg/m³</h2><p>PM10</p></div>",
+            unsafe_allow_html=True
+        )
+    with card3:
+        st.markdown(
+            f"<div class='card'><h2>{pollutants['co']} μg/m³</h2><p>CO</p></div>",
+            unsafe_allow_html=True
+        )
+
+    card4, card5, card6 = st.columns(3)
+    with card4:
+        st.markdown(
+            f"<div class='card'><h2>{pollutants['so2']} μg/m³</h2><p>SO₂</p></div>",
+            unsafe_allow_html=True
+        )
+    with card5:
+        st.markdown(
+            f"<div class='card'><h2>{pollutants['no2']} μg/m³</h2><p>NO₂</p></div>",
+            unsafe_allow_html=True
+        )
+    with card6:
+        st.markdown(
+            f"<div class='card'><h2>{pollutants['o3']} μg/m³</h2><p>O₃</p></div>",
+            unsafe_allow_html=True
+        )
+
+    st.markdown("---")
+
     # AQI Levels and Colors
     aqi_levels = ["Good", "Fair", "Moderate", "Poor", "Very Poor"]
     aqi_colors = ["#009966", "#FFDE33", "#FF9933", "#CC0033", "#660099"]
@@ -135,7 +191,7 @@ if st.button("Check Now 🚀"):
         marker_color=['#FFD700', '#FF9933', '#CC0033', '#FFDE33', '#FF9933', '#CC0033', '#FFD700', '#FFDE33']
     )])
     bar.update_layout(
-        title="Pollutant Concentration (μg/m3)",
+        title="Pollutant Concentration (μg/m³)",
         xaxis_title="Pollutants",
         yaxis_title="Concentration",
         paper_bgcolor='#222222',
@@ -161,7 +217,7 @@ if st.button("Check Now 🚀"):
         font=dict(color='#FFFFFF'),
         legend=dict(
             font=dict(
-                color='#FFFFFF'  # Legend label color changed to white
+                color='#FFFFFF'
             )
         )
     )
